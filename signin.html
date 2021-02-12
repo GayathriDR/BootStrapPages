@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>x-workz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+    </nav>
+<br />
+<br />
+    <body>
+        <div class="container">
+            <div class="col-lg-8 m-auto d-block">
+                <form action="#" onsubmit="return validate()" class="bg-light" >
+                    <div class="form-group">
+                        <label for="examplemail">Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Email" style="width:250px;" id="email" aria-describedby="basic-addon1" autocomplete="off"  />
+                    <span id="emailids" class="text-danger font-weight-bold"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" style="width:250px;" id="password" aria-describedby="basic-addon1" autocomplete="off" />
+                    <span id="passwords" class="text-danger font-weight-bold"></span>
+                    </div>
+                    <br />
+                    <div>
+                        <!-- <button class="btn btn-outline-success" type="submit" btn-clr="green"></button>-->
+                        <button class="btn btn-outline-success" type="submit" btn-clr="green" >Sign-In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function validate() {
+                var emailId = document.getElementById('email').value;
+                var pass = document.getElementById('password').value;
+
+                if (emailId == "") {
+                    document.getElementById('emailids').innerHTML = "please fille the emailid";
+
+                    return false;
+                }
+                else {
+                    document.getElementById('emailids').innerHTML = "";
+                }
+
+
+                if (emailId.indexOf("@") <= 0) {
+                    document.getElementById('emailids').innerHTML = "please fille proper emailid";
+
+                    return false;
+
+                }
+                else {
+                    document.getElementById('emailids').innerHTML = "";
+                }
+                if ((emailId.charAt(emailId.length - 4) != ".") && (emailId.charAt(emailId.length - 3) != ".")) {
+                    document.getElementById('emailids').innerHTML = "please fille the proper emailid";
+
+                    return false;
+                }
+                else {
+                    document.getElementById('emailids').innerHTML = "";
+                }
+                if (pass == "") {
+                    document.getElementById('passwords').innerHTML = "please fille the password";
+
+                    return false;
+                }
+                else {
+                    document.getElementById('passwords').innerHTML = "";
+                }
+                if ((pass.length <= 8) || (pass.length >= 21)) {
+                    document.getElementById('passwords').innerHTML = "please fille the password";
+
+                    return false;
+
+                }
+                else {
+                    document.getElementById('passwords').innerHTML = "";
+                }
+                
+
+
+            }
+            
+        </script>
+
+    </body>
+    <footer class="fixed-bottom" style="background-color: #e3f2fd; text-align: center;">Copyright@All rights resrved</footer>
+</html>
