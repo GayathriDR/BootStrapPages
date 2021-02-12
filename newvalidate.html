@@ -6,53 +6,55 @@
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script>
-    function geekforgeeks() {
-        var name = document.forms["form1"]["name"];
-        var email = document.forms["form1"]["email"];
-        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        var pass = /[!@#$%&]/;
-        var password = document.forms["form1"]["password"];
-        var confirmpassword = document.forms["form1"]["confirmpassword"];
-        var mobile = document.forms["form1"]["mobile"];
-        if (name.value == "" || ((name.value).length < 3) || ((name.value).length > 20)) {
-            window.alert("Please enter your name.");
-            name.focus();
-            return false;
-        }
-        
-        if (email.value != email.value.match(mailformat)) {
-            window.alert("Please enter a valid e-mail address.");
-            email.focus();
-            return false;
+    <script>
+        function geekforgeeks() {
+            var name = document.forms["form1"]["name"];
+            var email = document.forms["form1"]["email"];
+            var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            var pass = /[!@#$%&]/;
+            var password = document.forms["form1"]["password"];
+            var confirmpassword = document.forms["form1"]["confirmpassword"];
+            var mobile = document.forms["form1"]["mobile"];
+            if (name.value == "" || ((name.value).length < 3) || ((name.value).length > 20)) {
+                document.getElementById('usernames').innerHTML = "please fille the emailid";
+                return false;
+               
+            }
+
+            if (email.value != email.value.match(mailformat)) {
+
+                
+                window.alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+
+            if (password.value == "" || ((password.value).length < 8) || ((password.value).length > 21)) {
+                window.alert("Please enter your password");
+                password.focus();
+                return false;
+            }
+
+            if (confirmpassword.value == "" || (password.value != confirmpassword.value)) {
+                window.alert("Please confirm your password");
+                password.focus();
+                return false;
+            }
+            var phoneno = /^\d{10}$/;
+            if (mobile.value != mobile.value.match(phoneno)) {
+                window.alert(
+                    "Please enter your telephone number.");
+                phone.focus();
+                return false;
+            }
+            return true;
+
+
         }
 
-        if (password.value == "" || ((password.value).length < 8) || ((password.value).length > 21)){
-            window.alert("Please enter your password");
-            password.focus();
-            return false;
-        } 
 
-        if (confirmpassword.value == "" || (password.value != confirmpassword.value)) {
-            window.alert("Please confirm your password");
-            password.focus();
-            return false;
-        } 
-        var phoneno = /^\d{10}$/;
-        if (mobile.value != mobile.value.match(phoneno)) {
-            window.alert(
-                "Please enter your telephone number.");
-            phone.focus();
-            return false;
-        }
-        return true;
-        
-        
-    }
 
-       
-        
-</script>
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
@@ -63,33 +65,35 @@
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>-->
-    <div class="container-fluid">
+    <div class="form-group row">
         <nav class="navbar navbar-dark default-color">
-            <form action="#" name="form1"  onsubmit="return geekforgeeks()" method="post" id="form" class="form-inline" style="width:500px;margin:auto">
+            <form action="#" name="form1" onsubmit="return geekforgeeks()" method="post" id="form" class="form-inline" style="width:500px;margin:auto">
 
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Name</span>
-                    <input type="text" name="name" class="form-control" placeholder="Username" id="name" aria-describedby="basic-addon1">
+                <div class="col-xs-4">
+                    <!--  <span class="input-group-addon" id="basic-addon1">Name</span>-->
+                    <label for="examplename">Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Username" style="width:250px;" id="name" aria-describedby="basic-addon1">
+                    <span id="usernames" class="text-danger font-weight-bold"></span>
                 </div>
                 <br />
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Email</span>
-                    <input type="text" name="email" class="form-control" placeholder="Email" id="email" aria-describedby="basic-addon1">
+                <div class="col-xs-4">
+                    <label for="examplemail">Email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Email" style="width:250px;" id="email" aria-describedby="basic-addon1">
                 </div>
                 <br />
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Password</span>
-                    <input type="password" name="password" class="form-control" placeholder="Password" id="password" aria-describedby="basic-addon1">
+                <div class="col-xs-4">
+                    <label for="examplepassword">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" style="width:250px;" id="password" aria-describedby="basic-addon1">
                 </div>
                 <br />
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Confirm Password</span>
-                    <input type="password" name="confirmpassword" class="form-control" placeholder="confirm Password" id="confirmpassword" aria-describedby="basic-addon1">
+                <div class="col-xs-4">
+                    <label for="examplconfirmpassword">ConfirmPassword</label>
+                    <input type="password" name="confirmpassword" class="form-control" placeholder="confirm Password" style="width:250px;" id="confirmpassword" aria-describedby="basic-addon1">
                 </div>
                 <br />
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Mobile</span>
-                    <input type="text" name="mobile" class="form-control" placeholder="mobile" id="mobile" aria-describedby="basic-addon1">
+                <div class="col-xs-4">
+                    <label for="examplemobile">Mobile</label>
+                    <input type="text" name="mobile" class="form-control" placeholder="mobile" style="width:250px;" id="mobile" aria-describedby="basic-addon1">
                 </div>
                 <br />
                 <div class="col-lg-6">
@@ -114,7 +118,8 @@
     <script src="validate-script.js"></script>
 
 </body>
-<footer class="fixed-bottom" style="background-color: aquamarine; text-align: center;">Copyright@All rights resrved</footer></html>
+<footer class="fixed-bottom" style="background-color: #e3f2fd; text-align: center;">Copyright@All rights resrved</footer>
+</html>
 
    
     
